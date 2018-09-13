@@ -19,6 +19,24 @@
 (defconst spacemacs-version         "0.200.13" "Spacemacs version.")
 (defconst spacemacs-emacs-min-version   "24.4" "Minimal version of Emacs.")
 
+;; using local mirror mepla
+(require 'package)
+
+(setq package-enable-at-startup nil)
+(setq package-archives '(("melpa" . "~/.emacs.d/mirror-elpa/melpa/")
+                         ("org"   . "~/.emacs.d/mirror-elpa/org/")
+                         ("gnu"   . "~/.emacs.d/mirror-elpa/gnu/")))
+(package-initialize)
+
+(unless (package-installed-p 'use-package) ; Bootstrap John Wigley's `use-package'
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(use-package evil ; this will install evil mode even without an internet connection.
+  :ensure t
+  :config
+  (evil-mode))
+
 (if (not (version<= spacemacs-emacs-min-version emacs-version))
     (error (concat "Your version of Emacs (%s) is too old. "
                    "Spacemacs requires Emacs version %s or above.")

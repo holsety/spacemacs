@@ -1,0 +1,3 @@
+[submodule "/Users/hlst/.emacs.d/mirror-elpa"]
+	path = /Users/hlst/.emacs.d/mirror-elpa
+	url = https://github.com/d12frosted/elpa-mirror.git
